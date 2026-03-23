@@ -1,0 +1,1 @@
+This is the home page. <br> Create new pages by visiting /edit/ followed by the page name.<br>You can edit any page by clicking edit!<br>Except this one which is static and will reset when the instance is restarted.
