@@ -1,6 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editing {{.Title}} - Wiki</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        nav { background: #f0f0f0; padding: 10px 15px; margin-bottom: 20px; border-radius: 4px; display: flex; align-items: center; gap: 15px; }
+        nav a { text-decoration: none; color: #0066cc; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        .search-form input[type="text"] { padding: 4px 8px; border: 1px solid #ccc; border-radius: 3px; }
+        .search-form input[type="submit"] { padding: 4px 10px; cursor: pointer; }
+        textarea { width: 100%; box-sizing: border-box; }
+        input[type="submit"] { padding: 6px 16px; cursor: pointer; margin-top: 8px; }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="/view/Home">Home</a>
+    <form class="search-form" action="/search/" method="GET">
+        <input type="text" name="q" placeholder="Search pages...">
+        <input type="submit" value="Search">
+    </form>
+</nav>
+
 <h1>Editing {{.Title}}</h1>
 
 <form action="/save/{{.Title}}" method="POST">
-<div><textarea name="body" rows="20" cols="80">{{printf "%s" .Body}}</textarea></div>
-<div><input type="submit" value="Save"></div>
+    <div><textarea name="body" rows="20" cols="80">{{printf "%s" .Body}}</textarea></div>
+    <div><input type="submit" value="Save"></div>
 </form>
+</body>
+</html>

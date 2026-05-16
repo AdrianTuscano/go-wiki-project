@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search - Wiki</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        nav { background: #f0f0f0; padding: 10px 15px; margin-bottom: 20px; border-radius: 4px; }
+        nav a { text-decoration: none; color: #0066cc; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        .search-bar { display: flex; gap: 8px; margin-bottom: 20px; }
+        .search-bar input[type="text"] { padding: 6px 10px; border: 1px solid #ccc; border-radius: 3px; font-size: 1em; flex: 1; }
+        .search-bar input[type="submit"] { padding: 6px 16px; cursor: pointer; }
+        .result { border-bottom: 1px solid #ddd; padding: 12px 0; }
+        .result:last-child { border-bottom: none; }
+        .result h3 { margin: 0 0 4px 0; }
+        .result a { color: #0066cc; text-decoration: none; font-size: 1.1em; }
+        .result a:hover { text-decoration: underline; }
+        .no-results { color: #666; font-style: italic; }
+        .result-count { color: #555; margin-bottom: 12px; }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="/view/Home">Home</a>
+</nav>
+
+<h1>Search Wiki</h1>
+
+<form class="search-bar" action="/search/" method="GET">
+    <input type="text" name="q" value="{{.Query}}" placeholder="Search by title or content..." autofocus>
+    <input type="submit" value="Search">
+</form>
+
+{{if .Query}}
+    {{if .Results}}
+        <p class="result-count">Found {{len .Results}} result(s) for "<strong>{{.Query}}</strong>"</p>
+        {{range .Results}}
+        <div class="result">
+            <h3><a href="/view/{{.Title}}">{{.Title}}</a></h3>
+        </div>
+        {{end}}
+    {{else}}
+        <p class="no-results">No pages found matching "<strong>{{.Query}}</strong>".</p>
+    {{end}}
+{{end}}
+</body>
+</html>
